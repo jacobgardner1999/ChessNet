@@ -1,6 +1,6 @@
 ﻿namespace ChessBackend;
 
-public class Board
+public class Board : IBoard
 {
   public string[,] StringPosition { get; private set; }
   public IPiece[,] Position { get; private set; }
@@ -38,6 +38,11 @@ public class Board
     return StringPosition;
   }
 
+  public bool IsSquareOccupied(int row, int col)
+  {
+    return Position[row, col].Type != "Empty";
+  }
+
   private IPiece[,] GetPieces(string[,] position)
   {
     IPiece[,] pieces = new IPiece[8, 8];
@@ -52,7 +57,7 @@ public class Board
     return pieces;
   }
 
-  public IPiece GetPiece(string square)
+  public IPiece GetPieceAt(string square)
   {
     if (string.IsNullOrEmpty(square) || square.Length != 2)
     {
@@ -64,7 +69,7 @@ public class Board
     return Position[squareIndex[0], squareIndex[1]];
   }
 
-  public IPiece GetPiece(int rowIndex, int colIndex)
+  public IPiece GetPieceAt(int rowIndex, int colIndex)
   {
     return Position[rowIndex, colIndex];
   }
@@ -77,7 +82,7 @@ public class Board
 
     var (targetSquareX, targetSquareY) = (targetSquare[1], targetSquare[0]);
 
-    var piece = GetPiece(pieceSquare[0], pieceSquare[1]);
+    var piece = GetPieceAt(pieceSquare[0], pieceSquare[1]);
 
     if (piece.GetType() == typeof(EmptySquare))
     {
@@ -108,7 +113,7 @@ public class Board
     {
       for (var j = 0; j < 8; j++)
       {
-        newStringPosition[i, j] = GetPiece(i, j).Code;
+        newStringPosition[i, j] = GetPieceAt(i, j).Code;
       }
     }
 

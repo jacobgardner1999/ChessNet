@@ -30,7 +30,7 @@ public class BoardTests
   {
     var board = new Board();
 
-    var whiteKing = board.GetPiece("e1");
+    var whiteKing = board.GetPieceAt("e1");
 
     Assert.That(whiteKing.Code, Is.EqualTo("wk"));
   }
@@ -40,7 +40,7 @@ public class BoardTests
   {
     var board = new Board();
 
-    var emptySquare = board.GetPiece("h6");
+    var emptySquare = board.GetPieceAt("h6");
 
     Assert.That(emptySquare.Code, Is.EqualTo("oo"));
   }
@@ -54,9 +54,9 @@ public class BoardTests
     var invalidColumn = "i1";
     var invalidRow = "a9";
 
-    Assert.Throws<ArgumentException>(() => board.GetPiece(tooManyChars));
-    Assert.Throws<ArgumentException>(() => board.GetPiece(invalidColumn));
-    Assert.Throws<ArgumentException>(() => board.GetPiece(invalidRow));
+    Assert.Throws<ArgumentException>(() => board.GetPieceAt(tooManyChars));
+    Assert.Throws<ArgumentException>(() => board.GetPieceAt(invalidColumn));
+    Assert.Throws<ArgumentException>(() => board.GetPieceAt(invalidRow));
   }
 
   [Test]
@@ -103,5 +103,13 @@ public class BoardTests
     var move = "e4g5";
 
     Assert.Throws<ArgumentException>(() => board.MakeMove(move));
+  }
+
+  [Test]
+  public void Board_IsSquareOccupied_ShouldReturnTrue_WhenSquareIsOccupied()
+  {
+    var board = new Board();
+
+    Assert.That(board.IsSquareOccupied(0, 3), Is.EqualTo(true));
   }
 }

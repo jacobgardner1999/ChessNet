@@ -9,3 +9,4 @@
 /home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/refint/ChessBackend.dll
 /home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.pdb
 /home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ref/ChessBackend.dll
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.sourcelink.json

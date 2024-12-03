@@ -99,3 +99,4 @@
 /home/jacob-gardner/Documents/coding/dotnet/ChessGame/tests/ChessBackend.Tests/obj/Debug/net8.0/ChessBackend.Tests.pdb
 /home/jacob-gardner/Documents/coding/dotnet/ChessGame/tests/ChessBackend.Tests/obj/Debug/net8.0/ChessBackend.Tests.genruntimeconfig.cache
 /home/jacob-gardner/Documents/coding/dotnet/ChessGame/tests/ChessBackend.Tests/obj/Debug/net8.0/ref/ChessBackend.Tests.dll
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/tests/ChessBackend.Tests/obj/Debug/net8.0/ChessBackend.Tests.sourcelink.json
