@@ -1,0 +1,11 @@
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/bin/Debug/net8.0/ChessBackend.deps.json
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/bin/Debug/net8.0/ChessBackend.dll
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/bin/Debug/net8.0/ChessBackend.pdb
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.GeneratedMSBuildEditorConfig.editorconfig
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.AssemblyInfoInputs.cache
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.AssemblyInfo.cs
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.csproj.CoreCompileInputs.cache
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.dll
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/refint/ChessBackend.dll
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ChessBackend.pdb
+/home/jacob-gardner/Documents/coding/dotnet/ChessGame/src/ChessBackend/obj/Debug/net8.0/ref/ChessBackend.dll
