@@ -2,12 +2,12 @@ namespace ChessBackend;
 
 public class Rook : IPiece
 {
-  public string Colour { get; }
+  public Colour Colour { get; }
   public string Type => "Rook";
   public string Name => $"{Colour} {Type}";
-  public string Code => $"{Colour[0].ToString().ToLower()}{Type[0].ToString().ToLower()}";
+  public string Code => $"{Colour.ToString()[0].ToString().ToLower()}{Type[0].ToString().ToLower()}";
 
-  public Rook(string colour)
+  public Rook(Colour colour)
   {
     Colour = colour;
   }

@@ -2,7 +2,7 @@ namespace ChessBackend;
 
 public class EmptySquare : IPiece
 {
-  public String Colour => "None";
+  public Colour Colour => Colour.None;
   public String Type => "Empty";
   public String Name => "Empty Square";
   public String Code => "oo";

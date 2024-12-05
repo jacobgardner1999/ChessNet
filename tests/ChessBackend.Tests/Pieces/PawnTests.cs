@@ -8,7 +8,7 @@ public class PawnTests
   public void Pawn_ValidateMove_ShouldReturnTrue_ForOneSquareForward()
   {
     var board = new Board();
-    var pawn = new Pawn("White");
+    var pawn = new Pawn(Colour.White);
 
     Assert.That(pawn.validateMove((1, 4), (2, 4), board), Is.EqualTo(true));
   }
@@ -17,7 +17,7 @@ public class PawnTests
   public void Pawn_ValidateMove_ShouldReturnFalse_ForInvalidSquare()
   {
     var board = new Board();
-    var pawn = new Pawn("White");
+    var pawn = new Pawn(Colour.White);
 
     Assert.That(pawn.validateMove((1, 4), (3, 6), board), Is.EqualTo(false));
   }
@@ -26,7 +26,7 @@ public class PawnTests
   public void Pawn_ValidateMove_ShouldReturnTrue_ForTwoSquaresOnFirstMove()
   {
     var board = new Board();
-    var pawn = new Pawn("White");
+    var pawn = new Pawn(Colour.White);
 
     Assert.That(pawn.validateMove((1, 4), (3, 4), board), Is.EqualTo(true));
   }
@@ -35,7 +35,7 @@ public class PawnTests
   public void Pawn_ValidateMove_ShouldReturnFalse_ForWhiteBackwardsMove()
   {
     var board = new Board();
-    var pawn = new Pawn("White");
+    var pawn = new Pawn(Colour.White);
 
     Assert.That(pawn.validateMove((3, 4), (2, 4), board), Is.EqualTo(false));
   }
@@ -44,7 +44,7 @@ public class PawnTests
   public void Pawn_ValidateMove_ShouldReturnFalse_ForBlackBackwardsMove()
   {
     var board = new Board();
-    var pawn = new Pawn("Black");
+    var pawn = new Pawn(Colour.Black);
 
     Assert.That(pawn.validateMove((4, 4), (5, 4), board), Is.EqualTo(false));
   }
