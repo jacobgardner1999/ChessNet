@@ -16,11 +16,11 @@ public class Pawn : IPiece
   {
     if (position.col == target.col)
     {
-      if (position.row - target.row == 1)
+      if (position.row - target.row == 1 * (int)Colour)
       {
         return true;
       }
-      if (position.row - target.row == 2 && (position.row == 1 || position.row == 6))
+      if (position.row - target.row == 2 * (int)Colour && (position.row == 1 || position.row == 6))
       {
         return true;
       }

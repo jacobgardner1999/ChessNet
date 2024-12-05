@@ -5,18 +5,6 @@ public class Board : IBoard
   public string[,] StringPosition { get; private set; }
   public IPiece[,] Position { get; private set; }
 
-  public enum Files
-  {
-    a = 0,
-    b = 1,
-    c = 2,
-    d = 3,
-    e = 4,
-    f = 5,
-    g = 6,
-    h = 7,
-  }
-
   public Board()
   {
     StringPosition = new string[8, 8]
