@@ -14,12 +14,16 @@ public class Knight : IPiece
 
   public bool validateMove((int row, int col) position, (int row, int col) target, IBoard board)
   {
-    if (Math.Abs(position.col - target.col) == 1 && Math.Abs(position.row - target.row) == 2)
+    if (Math.Abs(position.col - target.col) == 1
+        && Math.Abs(position.row - target.row) == 2
+        && board.GetPieceAt(target.row, target.col).Colour != Colour)
     {
       return true;
     }
 
-    if (Math.Abs(position.row - target.row) == 1 && Math.Abs(position.col - target.col) == 2)
+    if (Math.Abs(position.row - target.row) == 1
+        && Math.Abs(position.col - target.col) == 2
+        && board.GetPieceAt(target.row, target.col).Colour != Colour)
     {
       return true;
     }
