@@ -16,7 +16,7 @@ public class Pawn : IPiece
   {
     if (position.col == target.col && !board.IsSquareOccupied(target.row, target.col))
     {
-      if (position.row - target.row == 1 * (int)Colour)
+      if (position.row - target.row == (int)Colour)
       {
         return true;
       }
@@ -24,6 +24,11 @@ public class Pawn : IPiece
       {
         return true;
       }
+    }
+
+    if (Math.Abs(position.col - target.col) == 1 && position.row - target.row == (int)Colour && board.IsSquareOccupied(target.row, target.col))
+    {
+      return true;
     }
 
     return false;
