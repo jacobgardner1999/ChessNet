@@ -26,7 +26,10 @@ public class Pawn : IPiece
       }
     }
 
-    if (Math.Abs(position.col - target.col) == 1 && position.row - target.row == (int)Colour && board.IsSquareOccupied(target.row, target.col))
+    if (Math.Abs(position.col - target.col) == 1
+        && position.row - target.row == (int)Colour
+        && board.IsSquareOccupied(target.row, target.col)
+        && board.GetPieceAt(target.row, target.col).Colour != Colour)
     {
       return true;
     }
