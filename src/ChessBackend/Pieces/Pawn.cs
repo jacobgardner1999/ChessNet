@@ -14,7 +14,7 @@ public class Pawn : IPiece
 
   public bool validateMove((int row, int col) position, (int row, int col) target, IBoard board)
   {
-    if (position.col == target.col)
+    if (position.col == target.col && !board.IsSquareOccupied(target.row, target.col))
     {
       if (position.row - target.row == 1 * (int)Colour)
       {

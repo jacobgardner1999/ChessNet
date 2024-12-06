@@ -21,6 +21,12 @@ public class Board : IBoard
     Position = GetPieces(StringPosition);
   }
 
+  public Board(string[,] position)
+  {
+    StringPosition = position;
+    Position = GetPieces(StringPosition);
+  }
+
   public string[,] GetStringPosition()
   {
     return StringPosition;
