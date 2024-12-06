@@ -10,7 +10,7 @@ public class PawnTests
     var board = new Board();
     var pawn = new Pawn(Colour.White);
 
-    Assert.That(pawn.validateMove((6, 4), (5, 4), board), Is.EqualTo(true));
+    Assert.That(pawn.validateMove("e2e3", board), Is.EqualTo(true));
   }
 
   [Test]
@@ -19,7 +19,7 @@ public class PawnTests
     var board = new Board();
     var pawn = new Pawn(Colour.White);
 
-    Assert.That(pawn.validateMove((6, 4), (3, 6), board), Is.EqualTo(false));
+    Assert.That(pawn.validateMove("e2f8", board), Is.EqualTo(false));
   }
 
   [Test]
@@ -28,7 +28,7 @@ public class PawnTests
     var board = new Board();
     var pawn = new Pawn(Colour.White);
 
-    Assert.That(pawn.validateMove((6, 4), (4, 4), board), Is.EqualTo(true));
+    Assert.That(pawn.validateMove("e2e4", board), Is.EqualTo(true));
   }
 
   [Test]
@@ -37,7 +37,7 @@ public class PawnTests
     var board = new Board();
     var pawn = new Pawn(Colour.White);
 
-    Assert.That(pawn.validateMove((3, 4), (5, 4), board), Is.EqualTo(false));
+    Assert.That(pawn.validateMove("e3e2", board), Is.EqualTo(false));
   }
 
   [Test]
@@ -46,7 +46,7 @@ public class PawnTests
     var board = new Board();
     var pawn = new Pawn(Colour.Black);
 
-    Assert.That(pawn.validateMove((3, 4), (2, 4), board), Is.EqualTo(false));
+    Assert.That(pawn.validateMove("e5e6", board), Is.EqualTo(false));
   }
 
   [Test]
@@ -67,6 +67,6 @@ public class PawnTests
     var board = new Board(position);
     var pawn = new Pawn(Colour.White);
 
-    Assert.That(pawn.validateMove((4, 4), (3, 4), board), Is.EqualTo(false));
+    Assert.That(pawn.validateMove("e4e5", board), Is.EqualTo(false));
   }
 }

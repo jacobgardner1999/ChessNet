@@ -28,4 +28,11 @@ public class Pawn : IPiece
 
     return false;
   }
+
+  public bool validateMove(string move, IBoard board)
+  {
+    var (position, target) = board.ParseMove(move);
+
+    return validateMove((position[0], position[1]), (target[0], target[1]), board);
+  }
 }

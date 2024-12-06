@@ -114,7 +114,7 @@ public class Board : IBoard
     return newStringPosition;
   }
 
-  private (int[], int[]) ParseMove(string move)
+  public (int[], int[]) ParseMove(string move)
   {
     if (move.Length != 4)
     { throw new ArgumentException("Invalid move structure"); }
@@ -138,7 +138,7 @@ public class Board : IBoard
     int colIndex = column - 'a';
 
     char row = square[1];
-    if (row < '0' || row > '7')
+    if (row < '1' || row > '8')
     {
       throw new ArgumentException("Invalid row notation");
     }
