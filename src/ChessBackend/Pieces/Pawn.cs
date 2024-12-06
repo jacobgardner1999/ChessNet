@@ -20,7 +20,7 @@ public class Pawn : IPiece
       {
         return true;
       }
-      if (position.row - target.row == 2 * (int)Colour && (position.row == 1 || position.row == 6))
+      if (position.row - target.row == 2 * (int)Colour && (position.row == 1 || position.row == 6) && !board.IsSquareOccupied(target.row + (int)Colour, target.col))
       {
         return true;
       }
