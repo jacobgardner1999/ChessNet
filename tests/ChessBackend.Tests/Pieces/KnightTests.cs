@@ -20,4 +20,26 @@ public class KnightTests
 
     Assert.That(knight.validateMove("g1f4", board), Is.EqualTo(false));
   }
+
+  [Test]
+  public void Knight_ValidateMove_ShouldReturnFalse_IfSquareHasOwnPiece()
+  {
+    var position = new string[8, 8]
+    {
+      {"br", "oo", "bb", "bq", "bk", "bb", "bn", "br"},
+      {"bp", "bp", "bp", "bp", "oo", "bp", "bp", "bp"},
+      {"oo", "oo", "bn", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "bp", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "wp", "oo", "oo", "oo"},
+      {"oo", "oo", "wn", "oo", "oo", "oo", "oo", "oo"},
+      {"wp", "wp", "wp", "wp", "oo", "wp", "wp", "wp"},
+      {"wr", "oo", "wb", "wq", "wk", "wb", "wn", "wr"},
+    };
+
+    var board = new Board(position);
+    var knight = new Knight(Colour.White);
+
+    Assert.That(knight.validateMove("c3e4", board), Is.EqualTo(false));
+
+  }
 }
