@@ -86,6 +86,37 @@ public class BoardTests
   }
 
   [Test]
+  public void Board_MovePiece_CanMovePieceMultipleTimes()
+  {
+    var board = new Board();
+    var move1 = "e2e4";
+    var move2 = "d7d5";
+    var move3 = "e4d5";
+    var move4 = "d8d5";
+
+    board.MakeMove(move1);
+    board.MakeMove(move2);
+    board.MakeMove(move3);
+    board.MakeMove(move4);
+
+    var updatedBoard = board.GetStringPosition();
+
+    var expectedBoard = new string[8, 8]
+          {
+            {"br", "bn", "bb", "oo", "bk", "bb", "bn", "br"},
+            {"bp", "bp", "bp", "oo", "bp", "bp", "bp", "bp"},
+            {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+            {"oo", "oo", "oo", "bq", "oo", "oo", "oo", "oo"},
+            {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+            {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+            {"wp", "wp", "wp", "wp", "oo", "wp", "wp", "wp"},
+            {"wr", "wn", "wb", "wq", "wk", "wb", "wn", "wr"},
+          };
+
+    Assert.That(updatedBoard, Is.EqualTo(expectedBoard));
+  }
+
+  [Test]
   public void Board_MovePiece_ShouldThrowException_WhenSquareIsEmpty()
   {
     var board = new Board();
