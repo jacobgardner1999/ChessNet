@@ -39,4 +39,37 @@ public class Knight : IPiece
 
     return validateMove((position.row, position.col), (target.row, target.col), board);
   }
+
+  public List<string> GetValidMoves(string square, IBoard board)
+  {
+    var (row, col) = board.ParseSquare(square);
+
+    var squares = new (int, int)[]
+      {
+        (row - 1, col - 2),
+        (row - 1, col + 2),
+        (row -2, col - 1),
+        (row - 2, col + 1),
+        (row + 1, col - 2),
+        (row + 1, col + 2),
+        (row + 2, col - 1),
+        (row + 2, col + 1)
+      };
+
+    var validSquares = new List<String>();
+
+    for (var i = 0; i < squares.Length; i++)
+    {
+      if (squares[i].Item1 < 8 && squares[i].Item2 < 8)
+      {
+        if (validateMove((row, col), squares[i], board))
+        {
+          validSquares.Add(board.ParseIndex(squares[i]));
+        }
+      }
+    }
+
+    return validSquares;
+
+  }
 }

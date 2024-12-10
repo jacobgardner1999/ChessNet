@@ -80,7 +80,7 @@ public class KnightTests
     var board = new Board(position);
     var knight = new Knight(Colour.White);
 
-    var expectedMoves = new List<string> { "g2", "f3", "f5", "g6" };
+    var expectedMoves = new List<string> { "f5", "g6", "f3", "g2" };
 
     Assert.That(knight.GetValidMoves("h4", board), Is.EqualTo(expectedMoves));
   }
