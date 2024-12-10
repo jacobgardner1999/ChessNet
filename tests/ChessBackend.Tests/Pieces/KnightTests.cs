@@ -62,4 +62,26 @@ public class KnightTests
 
     Assert.Throws<ArgumentException>(() => knight.validateMove("h4i6", board));
   }
+
+  [Test]
+  public void Knight_GetValidMoves_ShouldReturnCorrectMoves()
+  {
+    var position = new string[8, 8]
+    {
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "wn"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+    };
+    var board = new Board(position);
+    var knight = new Knight(Colour.White);
+
+    var expectedMoves = new List<string> { "g2", "f3", "f5", "g6" };
+
+    Assert.That(knight.GetValidMoves("h4", board), Is.EqualTo(expectedMoves));
+  }
 }
