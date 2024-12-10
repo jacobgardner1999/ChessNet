@@ -89,15 +89,9 @@ public class BoardTests
   public void Board_MovePiece_CanMovePieceMultipleTimes()
   {
     var board = new Board();
-    var move1 = "e2e4";
-    var move2 = "d7d5";
-    var move3 = "e4d5";
-    var move4 = "d8d5";
+    var moves = new string[4] { "e2e4", "d7d5", "e4d5", "d8d5" };
 
-    board.MakeMove(move1);
-    board.MakeMove(move2);
-    board.MakeMove(move3);
-    board.MakeMove(move4);
+    board.MakeMoves(moves);
 
     var updatedBoard = board.GetStringPosition();
 

@@ -99,6 +99,15 @@ public class Board : IBoard
     return Position;
   }
 
+  public IPiece[,] MakeMoves(string[] moves)
+  {
+    for (var i = 0; i < moves.Length; i++)
+    {
+      MakeMove(moves[i]);
+    }
+    return Position;
+  }
+
   private string[,] UpdateStringPos(IPiece[,] position)
   {
     var newStringPosition = new string[8, 8];
