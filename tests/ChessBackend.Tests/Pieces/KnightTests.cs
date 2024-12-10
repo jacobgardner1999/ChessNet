@@ -42,4 +42,24 @@ public class KnightTests
     Assert.That(knight.validateMove("c3e4", board), Is.EqualTo(false));
 
   }
+
+  [Test]
+  public void Knight_ValidateMove_ShouldThrowError_IfSquareOutOfBounds()
+  {
+    var position = new string[8, 8]
+    {
+      {"oo", "oo", "bn", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "bn", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "bn", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "bp", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "wp", "oo", "oo", "wn"},
+      {"oo", "oo", "wn", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "bn", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "bn", "oo", "oo", "oo", "oo", "oo"}
+    };
+    var board = new Board(position);
+    var knight = new Knight(Colour.White);
+
+    Assert.Throws<ArgumentException>(() => knight.validateMove("h4i6", board));
+  }
 }
