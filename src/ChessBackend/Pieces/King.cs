@@ -29,4 +29,24 @@ public class King : IPiece
 
     return validateMove((position.row, position.col), (target.row, target.col), board);
   }
+
+  public List<string> GetValidMoves(string square, IBoard board)
+  {
+    var (row, col) = board.ParseSquare(square);
+
+    var validMoves = new List<string>();
+
+    for (var i = -1; i < 2; i++)
+    {
+      for (var j = -1; j < 2; j++)
+      {
+        if (validateMove((row, col), (row + i, col + j), board))
+        {
+          validMoves.Add(board.ParseIndex((row + i, col + j)));
+        }
+      }
+    }
+
+    return validMoves;
+  }
 }
