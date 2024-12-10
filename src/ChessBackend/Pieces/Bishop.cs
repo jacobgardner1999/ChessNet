@@ -14,6 +14,29 @@ public class Bishop : IPiece
 
   public bool validateMove((int row, int col) position, (int row, int col) target, IBoard board)
   {
-    return true;
+    if (Math.Abs(position.row - target.row) == Math.Abs(position.col - target.col)
+        && board.GetPieceAt(target.row, target.col).Colour != Colour)
+    {
+      var dx = (position.row > target.row) ? -1 : 1;
+      var dy = (position.col > target.col) ? -1 : 1;
+      var j = position.col + dy;
+      for (var i = position.row + dx; i != target.row; i += dx)
+      {
+        if (board.IsSquareOccupied(i, j))
+        {
+          return false;
+        }
+        j += dy;
+      }
+      return true;
+    }
+    return false;
+  }
+
+  public bool validateMove(string move, IBoard board)
+  {
+    var (position, target) = board.ParseMove(move);
+
+    return validateMove((position[0], position[1]), (target[0], target[1]), board);
   }
 }

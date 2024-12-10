@@ -100,7 +100,7 @@ public class BishopTests
     var board = new Board(position);
     var bishop = new Bishop(Colour.White);
 
-    Assert.That(bishop.validateMove("d3da6", board), Is.EqualTo(false));
+    Assert.That(bishop.validateMove("d3a6", board), Is.EqualTo(false));
   }
 }
 
