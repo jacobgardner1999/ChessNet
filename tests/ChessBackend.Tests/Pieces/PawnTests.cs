@@ -177,4 +177,27 @@ public class PawnTests
     Assert.That(pawn.validateMove("d3e4", board), Is.EqualTo(false));
 
   }
+
+  [Test]
+  public void Pawn_GetValidMoves_ShouldReturnCorrectMoves_ForAllAvailableMoves()
+  {
+    var position = new string[8, 8]
+    {
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "bp", "oo", "bp", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "wp", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+    };
+
+    var board = new Board(position);
+    var pawn = new Pawn(Colour.White);
+
+    var expectedMoves = new string[] { "c3", "d3", "d4", "e3" };
+
+    Assert.That(pawn.GetValidMoves("d3", board), Is.EqualTo(expectedMoves));
+  }
 }
