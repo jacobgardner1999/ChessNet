@@ -39,4 +39,49 @@ public class Bishop : IPiece
 
     return validateMove((position.row, position.col), (target.row, target.col), board);
   }
+
+  public List<string> GetValidMoves(string square, IBoard board)
+  {
+    var (row, col) = board.ParseSquare(square);
+
+    var validSquares = new List<string>();
+
+    for (var i = 1; i + Math.Max(row, col) <= 8; i++)
+    {
+      if (!validateMove((row, col), (row + i, col + i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row + i, col + i)));
+    }
+
+    for (var i = 1; i + Math.Max(row, 8 - col) <= 8; i++)
+    {
+      if (!validateMove((row, col), (row + i, col - i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row + i, col - i)));
+    }
+
+    for (var i = 1; i + Math.Max(8 - row, col) <= 8; i++)
+    {
+      if (!validateMove((row, col), (row - i, col + i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row - i, col + i)));
+    }
+
+    for (var i = 1; i + Math.Max(8 - row, 8 - col) <= 8; i++)
+    {
+      if (!validateMove((row, col), (row - i, col - i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row - i, col - i)));
+    }
+
+    return validSquares;
+  }
 }

@@ -59,10 +59,8 @@ public class Pawn : IPiece
 
     for (var i = 0; i < 4; i++)
     {
-      Console.WriteLine($"Checking square: {squares[i]}");
       if (validateMove((row, col), squares[i], board))
       {
-        Console.WriteLine("Square valid");
         validSquares.Add(board.ParseIndex(squares[i]));
       }
     }

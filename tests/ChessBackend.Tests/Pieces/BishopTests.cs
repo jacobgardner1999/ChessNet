@@ -121,7 +121,7 @@ public class BishopTests
     var board = new Board(position);
     var bishop = new Bishop(Colour.White);
 
-    var expectedMoves = new List<string> { "c5", "b6", "a7", "c3", "e5", "f6" };
+    var expectedMoves = new List<string> { "c3", "e5", "f6", "c5", "b6", "a7" };
 
     Assert.That(bishop.GetValidMoves("d4", board), Is.EqualTo(expectedMoves));
   }
