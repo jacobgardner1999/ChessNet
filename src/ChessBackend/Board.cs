@@ -58,9 +58,9 @@ public class Board : IBoard
       throw new ArgumentException("Invalid square notation");
     }
 
-    var squareIndex = parseSquare(square);
+    var (row, col) = ParseSquare(square);
 
-    return Position[squareIndex[0], squareIndex[1]];
+    return Position[row, col];
   }
 
   public IPiece GetPieceAt(int rowIndex, int colIndex)
@@ -70,11 +70,7 @@ public class Board : IBoard
 
   public IPiece[,] MakeMove(string move)
   {
-    var (pieceSquare, targetSquare) = ParseMove(move);
-
-    var (pieceRow, pieceCol) = (pieceSquare[0], pieceSquare[1]);
-
-    var (targetRow, targetCol) = (targetSquare[0], targetSquare[1]);
+    var ((pieceRow, pieceCol), (targetRow, targetCol)) = ParseMove(move);
 
     var piece = GetPieceAt(pieceRow, pieceCol);
 
@@ -123,21 +119,21 @@ public class Board : IBoard
     return newStringPosition;
   }
 
-  public (int[], int[]) ParseMove(string move)
+  public ((int row, int col) position, (int row, int col) target) ParseMove(string move)
   {
     if (move.Length != 4)
     { throw new ArgumentException("Invalid move structure"); }
 
     var piece = move.Substring(0, 2);
-    var pieceIndex = parseSquare(piece);
+    var pieceIndex = ParseSquare(piece);
 
     var target = move.Substring(2, 2);
-    var targetIndex = parseSquare(target);
+    var targetIndex = ParseSquare(target);
 
     return (pieceIndex, targetIndex);
   }
 
-  private int[] parseSquare(string square)
+  public (int row, int col) ParseSquare(string square)
   {
     char column = square[0];
     if (column < 'a' || column > 'h')
@@ -153,7 +149,26 @@ public class Board : IBoard
     }
     int rowIndex = 8 - (row - '0');
 
-    return [rowIndex, colIndex];
+    return (rowIndex, colIndex);
+  }
+
+  public string ParseIndex((int row, int col) square)
+  {
+    if (square.row > 7)
+    {
+      throw new ArgumentException("Invalid row index");
+    }
+    string row = (8 - square.row).ToString();
+
+    if (square.col > 7)
+    {
+      throw new ArgumentException("Invalid column index");
+    }
+    char col = (char)(square.col + 97);
+
+    string stringSquare = col + row;
+
+    return stringSquare;
   }
 
 }

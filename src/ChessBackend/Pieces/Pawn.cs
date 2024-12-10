@@ -41,6 +41,32 @@ public class Pawn : IPiece
   {
     var (position, target) = board.ParseMove(move);
 
-    return validateMove((position[0], position[1]), (target[0], target[1]), board);
+    return validateMove((position.row, position.col), (target.row, target.col), board);
+  }
+
+  public List<string> GetValidMoves(string square, IBoard board)
+  {
+    var (row, col) = board.ParseSquare(square);
+    var squares = new (int, int)[]
+      {
+        (row - (int)Colour, col - 1),
+        (row - (int)Colour, col),
+        (row - (2*(int)Colour), col),
+        (row - (int)Colour, col + 1),
+      };
+
+    var validSquares = new List<String>();
+
+    for (var i = 0; i < 4; i++)
+    {
+      Console.WriteLine($"Checking square: {squares[i]}");
+      if (validateMove((row, col), squares[i], board))
+      {
+        Console.WriteLine("Square valid");
+        validSquares.Add(board.ParseIndex(squares[i]));
+      }
+    }
+
+    return validSquares;
   }
 }

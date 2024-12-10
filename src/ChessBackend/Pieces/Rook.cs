@@ -48,6 +48,6 @@ public class Rook : IPiece
   {
     var (position, target) = board.ParseMove(move);
 
-    return validateMove((position[0], position[1]), (target[0], target[1]), board);
+    return validateMove((position.row, position.col), (target.row, target.col), board);
   }
 }

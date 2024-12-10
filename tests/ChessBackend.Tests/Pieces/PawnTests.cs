@@ -196,8 +196,8 @@ public class PawnTests
     var board = new Board(position);
     var pawn = new Pawn(Colour.White);
 
-    var expectedMoves = new string[] { "c3", "d3", "d4", "e3" };
+    var expectedMoves = new List<string> { "c3", "d3", "d4", "e3" };
 
-    Assert.That(pawn.GetValidMoves("d3", board), Is.EqualTo(expectedMoves));
+    Assert.That(pawn.GetValidMoves("d2", board), Is.EqualTo(expectedMoves));
   }
 }
