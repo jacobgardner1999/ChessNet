@@ -141,5 +141,27 @@ public class QueenTests
 
     Assert.That(queen.validateMove("d3d8", board), Is.EqualTo(false));
   }
+
+  [Test]
+  public void Queen_GetValidMoves_ShouldReturnCorrectMoves()
+  {
+    var position = new string[8, 8]
+    {
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "bq", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "wq", "oo", "wk", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "bq", "oo", "oo", "oo", "wk", "oo", "oo"}
+    };
+    var board = new Board(position);
+    var queen = new Queen(Colour.White);
+
+    var expectedMoves = new List<string> { "f5", "g6", "f3", "g2" };
+
+    Assert.That(queen.getValidMoves("d3", board), Is.EqualTo(expectedMoves));
+  }
 }
 
