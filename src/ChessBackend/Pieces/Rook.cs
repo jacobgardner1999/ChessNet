@@ -50,4 +50,49 @@ public class Rook : IPiece
 
     return validateMove((position.row, position.col), (target.row, target.col), board);
   }
+
+  public List<string> GetValidMoves(string square, IBoard board)
+  {
+    var (row, col) = board.ParseSquare(square);
+
+    var validSquares = new List<string>();
+
+    for (var i = 1; i + col < 8; i++)
+    {
+      if (!validateMove((row, col), (row, col + i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row, col + i)));
+    }
+
+    for (var i = 1; col - i >= 0; i++)
+    {
+      if (!validateMove((row, col), (row, col - i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row, col - i)));
+    }
+
+    for (var i = 1; i + row < 8; i++)
+    {
+      if (!validateMove((row, col), (row + i, col), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row + i, col)));
+    }
+
+    for (var i = 1; row - i >= 0; i++)
+    {
+      if (!validateMove((row, col), (row - i, col), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row - i, col)));
+    }
+
+    return validSquares;
+  }
 }
