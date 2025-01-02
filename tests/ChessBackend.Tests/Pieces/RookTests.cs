@@ -102,4 +102,26 @@ public class RookTests
 
     Assert.That(rook.validateMove("d3d8", board), Is.EqualTo(false));
   }
+
+  [Test]
+  public void Rook_GetValidMoves_ShouldReturnCorrectMoves()
+  {
+    var position = new string[8, 8]
+    {
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "bq", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "oo", "oo", "wr", "oo", "wk", "oo", "oo"},
+      {"oo", "oo", "oo", "oo", "oo", "oo", "oo", "oo"},
+      {"oo", "bq", "oo", "oo", "oo", "wk", "oo", "oo"}
+    };
+    var board = new Board(position);
+    var rook = new Rook(Colour.White);
+
+    var expectedMoves = new List<string> { "e3", "c3", "b3", "a3", "d2", "d1", "d4", "d5", "d6", "d7" };
+
+    Assert.That(rook.GetValidMoves("d3", board), Is.EqualTo(expectedMoves));
+  }
 }
