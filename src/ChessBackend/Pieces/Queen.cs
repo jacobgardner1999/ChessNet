@@ -43,44 +43,10 @@ public class Queen : IPiece
 
     var validSquares = new List<string>();
 
+    var rook = new Rook(Colour);
     var bishop = new Bishop(Colour);
 
-    for (var i = 1; i + col < 8; i++)
-    {
-      if (!validateMove((row, col), (row, col + i), board))
-      {
-        break;
-      }
-      validSquares.Add(board.ParseIndex((row, col + i)));
-    }
-
-    for (var i = 1; col - i >= 0; i++)
-    {
-      if (!validateMove((row, col), (row, col - i), board))
-      {
-        break;
-      }
-      validSquares.Add(board.ParseIndex((row, col - i)));
-    }
-
-    for (var i = 1; i + row < 8; i++)
-    {
-      if (!validateMove((row, col), (row + i, col), board))
-      {
-        break;
-      }
-      validSquares.Add(board.ParseIndex((row + i, col)));
-    }
-
-    for (var i = 1; row - i >= 0; i++)
-    {
-      if (!validateMove((row, col), (row - i, col), board))
-      {
-        break;
-      }
-      validSquares.Add(board.ParseIndex((row - i, col)));
-    }
-
+    validSquares = rook.GetValidMoves(square, board);
     validSquares = validSquares.Concat(bishop.GetValidMoves(square, board)).ToList();
 
     return validSquares;
