@@ -159,9 +159,11 @@ public class QueenTests
     var board = new Board(position);
     var queen = new Queen(Colour.White);
 
-    var expectedMoves = new List<string> { "f5", "g6", "f3", "g2" };
+    var expectedMoves = new List<string> { "e3", "c3", "b3", "a3", "d2", "d1", "d4",
+                                          "d5", "d6", "d7", "c2", "b1", "e4", "f5",
+                                          "g6", "h7", "c4", "b5", "a6" };
 
-    Assert.That(queen.getValidMoves("d3", board), Is.EqualTo(expectedMoves));
+    Assert.That(queen.GetValidMoves("d3", board), Is.EqualTo(expectedMoves));
   }
 }
 

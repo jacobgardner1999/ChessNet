@@ -14,48 +14,16 @@ public class Queen : IPiece
 
   public bool validateMove((int row, int col) position, (int row, int col) target, IBoard board)
   {
-    if (position.col == target.col
-        && board.GetPieceAt(target.row, target.col).Colour != Colour)
+    var rook = new Rook(Colour);
+    var bishop = new Bishop(Colour);
+
+    if (rook.validateMove(position, target, board))
     {
-      var dy = (position.row > target.row) ? -1 : 1;
-      for (var i = position.row + dy; i != target.row; i += dy)
-      {
-        if (board.IsSquareOccupied(i, target.col))
-        {
-          return false;
-        }
-      }
       return true;
     }
 
-    if (position.row == target.row
-        && board.GetPieceAt(target.row, target.col).Colour != Colour)
+    if (bishop.validateMove(position, target, board))
     {
-      var dx = (position.col > target.col) ? -1 : 1;
-      for (var i = position.col + dx; i != target.col; i += dx)
-      {
-        if (board.IsSquareOccupied(target.row, i))
-        {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    if (Math.Abs(position.row - target.row) == Math.Abs(position.col - target.col)
-        && board.GetPieceAt(target.row, target.col).Colour != Colour)
-    {
-      var dx = (position.row > target.row) ? -1 : 1;
-      var dy = (position.col > target.col) ? -1 : 1;
-      var j = position.col + dy;
-      for (var i = position.row + dx; i != target.row; i += dx)
-      {
-        if (board.IsSquareOccupied(i, j))
-        {
-          return false;
-        }
-        j += dy;
-      }
       return true;
     }
 
@@ -67,5 +35,54 @@ public class Queen : IPiece
     var (position, target) = board.ParseMove(move);
 
     return validateMove((position.row, position.col), (target.row, target.col), board);
+  }
+
+  public List<string> GetValidMoves(string square, IBoard board)
+  {
+    var (row, col) = board.ParseSquare(square);
+
+    var validSquares = new List<string>();
+
+    var bishop = new Bishop(Colour);
+
+    for (var i = 1; i + col < 8; i++)
+    {
+      if (!validateMove((row, col), (row, col + i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row, col + i)));
+    }
+
+    for (var i = 1; col - i >= 0; i++)
+    {
+      if (!validateMove((row, col), (row, col - i), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row, col - i)));
+    }
+
+    for (var i = 1; i + row < 8; i++)
+    {
+      if (!validateMove((row, col), (row + i, col), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row + i, col)));
+    }
+
+    for (var i = 1; row - i >= 0; i++)
+    {
+      if (!validateMove((row, col), (row - i, col), board))
+      {
+        break;
+      }
+      validSquares.Add(board.ParseIndex((row - i, col)));
+    }
+
+    validSquares = validSquares.Concat(bishop.GetValidMoves(square, board)).ToList();
+
+    return validSquares;
   }
 }

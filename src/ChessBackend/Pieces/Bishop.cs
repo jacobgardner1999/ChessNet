@@ -46,7 +46,7 @@ public class Bishop : IPiece
 
     var validSquares = new List<string>();
 
-    for (var i = 1; i + Math.Max(row, col) <= 8; i++)
+    for (var i = 0; i + Math.Max(row, col) <= 7; i++)
     {
       if (!validateMove((row, col), (row + i, col + i), board))
       {
@@ -55,7 +55,7 @@ public class Bishop : IPiece
       validSquares.Add(board.ParseIndex((row + i, col + i)));
     }
 
-    for (var i = 1; i + Math.Max(row, 8 - col) <= 8; i++)
+    for (var i = 1; i + Math.Max(row, 7 - col) <= 7; i++)
     {
       if (!validateMove((row, col), (row + i, col - i), board))
       {
@@ -64,7 +64,7 @@ public class Bishop : IPiece
       validSquares.Add(board.ParseIndex((row + i, col - i)));
     }
 
-    for (var i = 1; i + Math.Max(8 - row, col) <= 8; i++)
+    for (var i = 1; i + Math.Max(7 - row, col) <= 7; i++)
     {
       if (!validateMove((row, col), (row - i, col + i), board))
       {
@@ -73,7 +73,7 @@ public class Bishop : IPiece
       validSquares.Add(board.ParseIndex((row - i, col + i)));
     }
 
-    for (var i = 1; i + Math.Max(8 - row, 8 - col) <= 8; i++)
+    for (var i = 1; i + Math.Max(7 - row, 7 - col) <= 7; i++)
     {
       if (!validateMove((row, col), (row - i, col - i), board))
       {
